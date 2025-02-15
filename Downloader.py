@@ -14,17 +14,13 @@ class Downloader():
                 {  
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3', 
-                    'preferredquality': '0', 
+                    'preferredquality': '0',  
                 },
                 {
-                    'key': 'EmbedThumbnail'
-                },
-                {
-                    'key': 'FFmpegMetadata'
+                    'key': 'FFmpegMetadata'  
                 }
             ],
-            'writethumbnail': True,  # Download the thumbnail
-            'outtmpl': os.path.join(self.download_path, '%(title)s.%(ext)s'),  # File name format
+            'outtmpl': os.path.join(self.download_path, '%(title)s.%(ext)s'),
         }
     
     def download_video_as_mp3(self, url, download_path = None):
