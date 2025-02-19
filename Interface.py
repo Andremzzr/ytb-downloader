@@ -9,13 +9,13 @@ class Interface:
         
         self.root = tk.Tk()
         self.root.title("Youtube Downloader")
+
         self.link_var=tk.StringVar()
         self.youtube_link_label = tk.Label(self.root, text = 'Youtube Link', font=('calibre',10, 'bold'))
-        
         self.link = tk.Entry(self.root,textvariable = self.link_var, font=('calibre',10,'normal'))
         
-        self.youtube_link_label.grid(row=0,column=1)
-        self.link.grid(row=0,column=2)
+        self.youtube_link_label.grid(row=0,column=0)
+        self.link.grid(row=0,column=1)
 
         self.select_button = tk.Button(self.root, 
                    text="Select Folder", 
@@ -29,7 +29,7 @@ class Interface:
                    disabledforeground="gray",
                    fg="black",
                    font=("Arial", 12),
-                   height=2,
+                   height=1,
                    highlightbackground="black",
                    highlightcolor="green",
                    highlightthickness=2,
@@ -52,7 +52,7 @@ class Interface:
                    disabledforeground="gray",
                    fg="black",
                    font=("Arial", 12),
-                   height=2,
+                   height=1,
                    highlightbackground="black",
                    highlightcolor="green",
                    highlightthickness=2,
@@ -76,4 +76,5 @@ class Interface:
             return
         
         if self.youtube_link_label and self.link:
-            self.download_service.download_video_as_mp3(self.link.get())
+            print(self.file_path)
+            self.download_service.download_video_as_mp3(url=self.link.get(), download_path=self.file_path)
