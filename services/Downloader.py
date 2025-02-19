@@ -26,12 +26,12 @@ class Downloader():
     def download_video_as_mp3(self, url, download_path = None):
         if download_path:
             self.ydl_opts['outtmpl'] = os.path.join(download_path, '%(title)s.%(ext)s')
+            self.download_path = download_path
+
+        info = ydl.extract_info(url, download=False)
+        file_path = os.path.join(download_path or self.download_path, f"{info['title']}.mp3")
+        
         with YoutubeDL(self.ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            file_path = os.path.join(download_path or self.download_path, f"{info['title']}.mp3")
-
-
-            
             if os.path.exists(file_path):
                 try:
                     os.remove(file_path)
